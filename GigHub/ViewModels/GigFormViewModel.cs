@@ -14,11 +14,11 @@ namespace GigHub.ViewModels
         public string Venue { get; set; }
 
         [Required]
-        [FutureDate]
+        [FutureDate(ErrorMessage = "Date needs to be filled in properly...")]
         public string Date { get; set; }
 
-        [Required(ErrorMessage = "Time needs to be filled in...")]
-        [ValidTime(ErrorMessage = "Please enter: 10:00 e.g")]
+        [Required(ErrorMessage = "Time needs to be filled in properly...")]
+        [ValidTime(ErrorMessage = "Please enter: e.g 10:00")]
         public string Time { get; set; }
 
         [Required]

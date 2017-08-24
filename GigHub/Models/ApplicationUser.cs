@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Spatial;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,5 +17,7 @@ namespace GigHub.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public string Name { get; set; }
     }
 }

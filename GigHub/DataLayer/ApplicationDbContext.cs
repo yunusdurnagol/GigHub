@@ -20,6 +20,7 @@ namespace GigHub.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new ApplicationUserConfiguration());
             modelBuilder.Configurations.Add(new GigConfiguration());
             modelBuilder.Configurations.Add(new GenreConfiguration());
             base.OnModelCreating(modelBuilder);

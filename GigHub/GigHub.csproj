@@ -192,6 +192,7 @@
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataLayer\ApplicationUserConfiguration.cs" />
     <Compile Include="DataLayer\GenreConfiguration.cs" />
     <Compile Include="DataLayer\GigConfiguration.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,6 +210,10 @@
     <Compile Include="Migrations\201708232024120_PopulateGenreTable.Designer.cs">
       <DependentUpon>201708232024120_PopulateGenreTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708241958434_ExtendApplicationUser.cs" />
+    <Compile Include="Migrations\201708241958434_ExtendApplicationUser.Designer.cs">
+      <DependentUpon>201708241958434_ExtendApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="DataLayer\ApplicationDbContext.cs" />
@@ -218,8 +223,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomUserValidator.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
     <Compile Include="ViewModels\GigFormViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ValidTime.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708232024120_PopulateGenreTable.resx">
       <DependentUpon>201708232024120_PopulateGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708241958434_ExtendApplicationUser.resx">
+      <DependentUpon>201708241958434_ExtendApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

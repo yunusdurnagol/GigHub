@@ -90,3 +90,8 @@ body {
     box-shadow: none;
     -webkit-box-shadow: none;
 }
+
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+}

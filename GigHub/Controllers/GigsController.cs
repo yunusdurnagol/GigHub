@@ -31,16 +31,24 @@ namespace GigHub.Controllers
 
         [Authorize]
         [HttpPost]
-
+        [ValidateAntiForgeryToken]
         public ActionResult Create(GigFormViewModel viewModel)
         {
 
+            if (!ModelState.IsValid)
+            {
+                viewModel.Genres = _context.Genres.ToList();
+                return View("Create", viewModel);
+            }
+
+            #region ForeignKey Properties defined 
             /*
-             We defined foreign keys we dont assign navigation properties. 
-             the other way we go to database and time and data consume.
-             */
+               We defined foreign keys we dont assign navigation properties. 
+               the other way we go to database and time and data consume.
+               */
             //var artist = _context.Users.Single(u => u.Id == userId);
-            //var genre = _context.Genres.Single(g => g.Id == viewModel.Genre);
+            //var genre = _context.Genres.Single(g => g.Id == viewModel.Genre); 
+            #endregion
 
             var gig = new Gig()
             {

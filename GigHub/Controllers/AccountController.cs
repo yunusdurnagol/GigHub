@@ -159,11 +159,7 @@ namespace GigHub.Controllers
                     Email = model.Email,
                     Name = model.Name
                 };
-
-
-
-
-
+                // Custom error messages
                 UserManager.UserValidator = new CustomUserValidator<ApplicationUser>(UserManager);
 
                 var result = await UserManager.CreateAsync(user, model.Password);

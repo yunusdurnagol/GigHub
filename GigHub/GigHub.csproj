@@ -200,13 +200,25 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AttendancesController.cs" />
+    <Compile Include="Controllers\Api\FollowingController.cs" />
+    <Compile Include="Helpers\IdentityExtensions.cs" />
+    <Compile Include="Migrations\201708261955579_DisplayNameAddedToUser.cs" />
+    <Compile Include="Migrations\201708261955579_DisplayNameAddedToUser.Designer.cs">
+      <DependentUpon>201708261955579_DisplayNameAddedToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\FollowerViewModel.cs" />
+    <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="ViewModels\GigViewModel.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataLayer\ApplicationUserConfiguration.cs" />
     <Compile Include="DataLayer\AttendanceConfiguration.cs" />
+    <Compile Include="DataLayer\FollowingConfiguration.cs" />
     <Compile Include="DataLayer\GenreConfiguration.cs" />
     <Compile Include="DataLayer\GigConfiguration.cs" />
+    <Compile Include="Dtos\AttendanceDto.cs" />
+    <Compile Include="Dtos\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -230,10 +242,15 @@
     <Compile Include="Migrations\201708261108416_CreateAttendanceTable.Designer.cs">
       <DependentUpon>201708261108416_CreateAttendanceTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708261426341_CreateFollowingTable.cs" />
+    <Compile Include="Migrations\201708261426341_CreateFollowingTable.Designer.cs">
+      <DependentUpon>201708261426341_CreateFollowingTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="DataLayer\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -280,7 +297,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Gigs.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -302,10 +319,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Gigs\Create.cshtml" />
+    <Content Include="Views\Followings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Dtos\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -337,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708261108416_CreateAttendanceTable.resx">
       <DependentUpon>201708261108416_CreateAttendanceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708261426341_CreateFollowingTable.resx">
+      <DependentUpon>201708261426341_CreateFollowingTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708261955579_DisplayNameAddedToUser.resx">
+      <DependentUpon>201708261955579_DisplayNameAddedToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

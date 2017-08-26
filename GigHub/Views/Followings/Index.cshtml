@@ -1,0 +1,13 @@
+﻿
+@using GigHub.Helpers
+@using Microsoft.AspNet.Identity
+@model GigHub.ViewModels.FollowerViewModel
+@{
+    ViewBag.Title = "My Followers";
+}
+
+<h2>@User.Identity.GetDisplayName()'s followers</h2>
+@foreach (var follower in @Model.Followers)
+{
+    <li class="voffset3">@follower.Follower.Name</li>
+}

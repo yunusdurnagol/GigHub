@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Data.Entity.Spatial;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -14,10 +16,23 @@ namespace GigHub.Models
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+
             // Add custom user claims here
+            //await manager.AddClaimAsync(userIdentity.GetUserId(), new Claim("FirstName", DisplayName));
+
+            userIdentity.AddClaim(new Claim("DisplayName", this.Name.ToString()));
             return userIdentity;
         }
 
         public string Name { get; set; }
+        public string DisplayName { get; set; }
+        public ICollection<Following> Followers { get; set; }
+        public ICollection<Following> Followees { get; set; }
+
+        public ApplicationUser()
+        {
+            Followers = new Collection<Following>();
+            Followees = new Collection<Following>();
+        }
     }
 }

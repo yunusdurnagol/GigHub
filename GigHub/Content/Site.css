@@ -85,6 +85,15 @@ body {
     border-radius: 9px;
     padding: 7px 20px;
 }
+.btn-sm, .btn-xs {
+    padding: 1px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 9px;
+}
+
+
+
 .form-control:focus {
     border-color: #2196f3;
     box-shadow: none;
@@ -133,15 +142,16 @@ body {
     position: absolute;
     top: 5px;
     left: 70px;
-
+    width: 100px;
 }
 
 .gigs >li .details .artist {
-    font-weight: bold;
+    font-weight: bolder;
     display: block;
      
 }
-    .gigs > li .details .genre {
+.gigs > li .details .genre {
+       
         font-size: 15px;
-        margin-bottom: 0px;
-    }
+         
+}

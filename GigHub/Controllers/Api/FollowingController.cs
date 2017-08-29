@@ -18,7 +18,7 @@ namespace GigHub.Controllers.Api
             _context = new ApplicationDbContext();
         }
         [HttpPost]
-        public IHttpActionResult Follow(FollowingDto dto)
+        public IHttpActionResult CreateFollow(FollowingDto dto)
         {
             var userId = User.Identity.GetUserId();
             var exist = _context.Followings.Any(f => f.FolloweeId == dto.FolloweeId && f.FollowerId == userId);

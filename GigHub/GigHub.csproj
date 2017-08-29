@@ -201,11 +201,26 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AttendancesController.cs" />
     <Compile Include="Controllers\Api\FollowingController.cs" />
+    <Compile Include="Controllers\Api\GigController.cs" />
+    <Compile Include="DataLayer\NotificationConfiguration.cs" />
+    <Compile Include="DataLayer\UserNotificationConfiguration.cs" />
+    <Compile Include="Dtos\GigDto.cs" />
     <Compile Include="Helpers\IdentityExtensions.cs" />
     <Compile Include="Migrations\201708261955579_DisplayNameAddedToUser.cs" />
     <Compile Include="Migrations\201708261955579_DisplayNameAddedToUser.Designer.cs">
       <DependentUpon>201708261955579_DisplayNameAddedToUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708271731370_AddIsCanceledToGig.cs" />
+    <Compile Include="Migrations\201708271731370_AddIsCanceledToGig.Designer.cs">
+      <DependentUpon>201708271731370_AddIsCanceledToGig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291242463_AddNotifications.cs" />
+    <Compile Include="Migrations\201708291242463_AddNotifications.Designer.cs">
+      <DependentUpon>201708291242463_AddNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Noification.cs" />
+    <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="ViewModels\FollowerViewModel.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
@@ -270,6 +285,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -318,7 +334,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Gigs\Create.cshtml" />
+    <Content Include="Views\Gigs\GigForm.cshtml" />
     <Content Include="Views\Followings\Index.cshtml" />
     <Content Include="Views\Gigs\Mine.cshtml" />
   </ItemGroup>
@@ -362,6 +378,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708261955579_DisplayNameAddedToUser.resx">
       <DependentUpon>201708261955579_DisplayNameAddedToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271731370_AddIsCanceledToGig.resx">
+      <DependentUpon>201708271731370_AddIsCanceledToGig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291242463_AddNotifications.resx">
+      <DependentUpon>201708291242463_AddNotifications.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

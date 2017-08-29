@@ -99,6 +99,7 @@ body {
 }
 .form-control {
     font-size: 17px;
+    height: 44px;
     -ms-border-radius: 9px;
     border-radius: 9px;     
 }
@@ -115,7 +116,6 @@ body {
     line-height: 1.5;
     border-radius: 9px;
 }
-
 
 
 .form-control:focus {
@@ -166,11 +166,11 @@ body {
     position: absolute;
     top: 5px;
     left: 70px;
-    width: 100px;
+    
 }
 
 .gigs >li .details .artist {
-    font-weight: bolder;
+    font-weight: bold;
     display: block;
      
 }
@@ -179,3 +179,12 @@ body {
         font-size: 15px;
          
 }
+
+.gigs >li .actions {
+    font-size: 15px;
+    display: none
+}
+
+.gigs > li:hover .actions { font-size: 15px;
+    display: block;        
+    }

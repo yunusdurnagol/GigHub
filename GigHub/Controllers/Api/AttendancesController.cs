@@ -25,7 +25,7 @@ namespace GigHub.Controllers.Api
             var userId = User.Identity.GetUserId();
 
             if (_context.Attendances.Any(a => a.AttendeeId == userId && a.GigId == dto.GigId))
-                return BadRequest("You already attend this gig..");
+                return BadRequest("You have already attended this gig..");
 
             var attendance = new Attendance
             {

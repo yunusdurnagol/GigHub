@@ -4,6 +4,11 @@
 }
 
 <h2>My Upcoming Gigs</h2>
+@if (Request.QueryString["Updated"] == "yes" && Request.QueryString["page"] == "update")
+{
+    <p class="alert alert-success" style="font-weight: bold">Your upcoming gig is updated succcessfuly..</p>
+}
+
 <ul class="gigs voffset4">
     
     @foreach (var gig in Model)
@@ -26,11 +31,67 @@
                 <span class="genre">
                     @gig.Genre.Name
                 </span>
-                
+                <div class="actions">
+                    <a href="@Url.Action("Edit","Gigs",new {id=gig.Id})">Edit</a>
+                    <a href="#" class="js-cancel-gig" data-gig-id=@gig.Id>Cancel</a>
+                </div>
             </div>
         </li>
 
-
-
     }
 </ul>
+@section scripts
+{
+      
+     
+    <script>
+        //When document is ready this function is going to be called
+        $(document).ready(function ()
+        {
+            //Here im going to get all objects with class js-cancel-gig
+            //when it is clicked function is called
+            $(".js-cancel-gig").click(function(e) {
+                //First i want to ask for confirmation for delete
+                
+                var button = $(e.target);
+
+                bootbox.dialog({
+                    title: 'Delete a gig',
+                    message: "Are you sure you want to cancel the gig?",
+                    buttons: {
+                        no: {
+                            label: "No",
+                            className: 'btn-default',
+                            callback: function() {
+                                bootbox.hideAll();
+                                
+                            }
+                        },
+                        
+                        yes: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function(){
+                                //we call Jquery ajax with $.ajax()
+                                //We specify the url and method
+                                $.ajax({
+                                        url: "/api/gig/" + button.attr("data-gig-id"),
+                                        method: "DELETE"
+                                    })
+                                    //if delete is successfull
+                                    .done(function() {
+                                        button.parents("li").fadeOut(function() {
+                                            $(this).remove();
+                                        });
+                                    })
+                                    .fail(function () {
+                                        bootbox.alert("Something failed");
+                                    });  
+                            }
+                        }
+                    }
+                });//end of dialog
+            });
+        });
+    </script>
+}

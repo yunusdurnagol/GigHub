@@ -25,13 +25,13 @@ namespace GigHub.Controllers.Api
         public IEnumerable<NotificationDto> GetNewNotifications()
         {
             var userId = User.Identity.GetUserId();
-            /*var notifications = _context.UserNotifications
-                .Where(u => u.UserId == userId && u.IsRead == false)
-                .Select(un => un.Notification)
-                .Include(n => n.Gig.Artist)
-                .ProjectTo<NotificationDto>()// This is from automapper implementation
-                .ToList();
-            */
+            //var notifications = _context.UserNotifications
+            //   .Where(u => u.UserId == userId && u.IsRead == false)
+            //   .Select(un => un.Notification)
+            //   .Include(n => n.Gig.Artist)
+            //   .ProjectTo<NotificationDto>()// This is from automapper implementation
+            //   .ToList();
+
             var notifications = _context.UserNotifications
                 .Where(u => u.UserId == userId && !u.IsRead)
                 .Select(un => un.Notification)
@@ -39,6 +39,7 @@ namespace GigHub.Controllers.Api
                 .ToList();
 
             return notifications.Select(Mapper.Map<Notification, NotificationDto>);
+            // return notifications;
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using GigHub.Dtos;
+using GigHub.Models;
 
-namespace GigHub.Models
+namespace GigHub
 {
     public class AutoMapperProfile : Profile
     {
@@ -11,6 +12,7 @@ namespace GigHub.Models
             CreateMap<Gig, GigDto>();
             CreateMap<Genre, GenreDto>();
             CreateMap<Attendance, AttendanceDto>();
+            CreateMap<Notification, NotificationDto>();
             CreateMap<Following, FollowingDto>();
         }
     }

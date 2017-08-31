@@ -59,7 +59,9 @@
                     title: "notifications",
                     placement: "bottom",
                     content:function() {
-                        return "hello world";
+                        var compiled = _.template("Hello <%= name%>");
+                        var html = compiled({ name: "Yunus" });
+                        return html;
                     }
 
             });

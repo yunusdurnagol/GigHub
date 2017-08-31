@@ -15,7 +15,7 @@ namespace GigHub.Dtos
         public DateTime? OriginalDateTime { get; private set; }
         public string OriginalValue { get; private set; }
 
-        public GigDto GigDto { get; private set; }
+        public GigDto Gig { get; private set; }
         public int GigId { get; set; }
     }
 }

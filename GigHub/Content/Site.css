@@ -86,7 +86,7 @@ textarea {
     background: #a80a0a;
     }
 
-.dropdown-menu {
+.popover {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -199,3 +199,25 @@ body {
 .gigs > li:hover .actions { font-size: 15px;
     display: block;        
     }
+
+ul.popover-notifications {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.popover-notifications>li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+ ul.popover-notifications > li:last-child {
+        border-bottom: none;
+        
+         
+}
+ul.popover-notifications>li .highlight {
+    font-weight: bold;
+    color: red;
+}
+
+   

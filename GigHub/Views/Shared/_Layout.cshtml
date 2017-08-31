@@ -49,9 +49,21 @@
                     function(notifications) {
                         $(".js-notifications-count").
                             text(notifications.length).
-                            removeClass("hide");
+                            removeClass("hide")
+                            .addClass("animated bounceInDown");
                         
                     });
+
+                $(".notifications").popover({
+                    html: true,
+                    title: "notifications",
+                    placement: "bottom",
+                    content:function() {
+                        return "hello world";
+                    }
+
+            });
+
             });
         </script>
     

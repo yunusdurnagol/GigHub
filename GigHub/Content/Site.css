@@ -66,19 +66,30 @@ textarea {
     color: #fff;
 }
 
-    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
       background-color: rgba(219, 31, 30, 0.59);
     }
-.dropdown-menu {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
 
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
     border-top-color: #FFF;
     border-bottom-color: #FFF;
 }
 
+.navbar-inverse .notifications {
+    position: relative;
+}
+
+.navbar-inverse .notifications .badge {
+        position: absolute;
+        top: 9px;
+    right: -2px;
+    background: #a80a0a;
+    }
+
+.dropdown-menu {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 h1,
 h2,
 h3,

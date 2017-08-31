@@ -27,12 +27,12 @@ namespace GigHub.Controllers.Api
             if (_context.Attendances.Any(a => a.AttendeeId == userId && a.GigId == dto.GigId))
                 return BadRequest("You have already attended this gig..");
 
-            var attendance = new Attendance
-            {
-                GigId = dto.GigId,
-                AttendeeId = userId
-            };
+
+
+            var attendance = new Attendance(dto.GigId, userId);
+
             _context.Attendances.Add(attendance);
+
             _context.SaveChanges();
             return Ok();
         }

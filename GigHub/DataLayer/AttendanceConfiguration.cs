@@ -17,8 +17,11 @@ namespace GigHub.Models
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("AK_Attendance", 2) { IsUnique = true }));
 
             HasRequired(a => a.Gig).
-            WithMany().
+            WithMany(g => g.Attendances).
             WillCascadeOnDelete(false);
+
+            HasRequired(a => a.Gig)
+                .WithMany(u => u.Attendances);
 
         }
     }

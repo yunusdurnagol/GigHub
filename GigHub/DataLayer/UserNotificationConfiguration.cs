@@ -21,7 +21,7 @@ namespace GigHub.DataLayer
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("AK_Notification", 2) { IsUnique = true }));
 
             HasRequired(n => n.User)
-                .WithMany()
+                .WithMany(u => u.UserNotifications)
                 .WillCascadeOnDelete(false);
         }
     }

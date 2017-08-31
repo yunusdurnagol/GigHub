@@ -11,5 +11,16 @@ namespace GigHub.Models
         public int GigId { get; set; }
         public ApplicationUser Attendee { get; set; }
         public string AttendeeId { get; set; }
+
+        protected Attendance()
+        {
+
+        }
+
+        public Attendance(int gigId, string attendeeId)
+        {
+            GigId = gigId;
+            AttendeeId = attendeeId;
+        }
     }
 }

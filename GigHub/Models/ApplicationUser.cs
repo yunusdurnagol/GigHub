@@ -28,11 +28,28 @@ namespace GigHub.Models
         public string DisplayName { get; set; }
         public ICollection<Following> Followers { get; set; }
         public ICollection<Following> Followees { get; set; }
+        public ICollection<UserNotification> UserNotifications { get; set; }
 
         public ApplicationUser()
         {
             Followers = new Collection<Following>();
             Followees = new Collection<Following>();
+            UserNotifications = new Collection<UserNotification>();
+        }
+
+        public void Notify(Notification notification)
+        {
+            #region Explanation
+
+            /* This user and notification can cause null reference exception
+             UserNotification class is association class between user and notification
+            so user and notifications cant be  null so we need to control
+            in constructor...*/
+
+            //var userNotifacation = new UserNotification(this, notification);
+
+            #endregion
+            UserNotifications.Add(new UserNotification(this, notification));
         }
     }
 }

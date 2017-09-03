@@ -54,7 +54,11 @@
                 </span>
                 @if (@Model.ShowActions&&!gig.isCanceled)
                 {
-                    <button data-gig-id="@gig.Id" class="js-toggle-attendance btn btn-default btn-sm pull-right">Going ?</button>
+                    <button 
+                        data-gig-id="@gig.Id" 
+                        class="js-toggle-attendance btn 
+                            @(Model.Attendances.Contains(gig.Id)?"btn-info":"btn-default") 
+                            btn-sm pull-right">Going ?</button>
                 }
                
             </div>
@@ -69,19 +73,8 @@
 {
     <script>
         $(document).ready(function() {
-            $(".js-toggle-attendance").click(function(e) {
-                var button = $(e.target);
-                $.post("/api/attendances", {gigId:button.attr("data-gig-id")})
-                    .done(function() {
-                        button.removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
-                    })
-                    .fail(function() {
-                        alert("Something Failed");
-                    });
-            });
-            //button click
+            GigsController.init();
+            
         });
     </script>
     

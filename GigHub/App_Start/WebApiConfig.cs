@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -14,6 +15,9 @@ namespace GigHub
             var settings = GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
 
             config.MapHttpAttributeRoutes();
 

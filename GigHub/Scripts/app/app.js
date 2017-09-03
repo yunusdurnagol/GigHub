@@ -1,36 +1,39 @@
 ﻿var GigsController = function() {
     var init = function() {
-        $(".js-toggle-attendance").click(function (e) {
-            var button = $(e.target);
-            if (button.hasClass("btn-default")) {
-                $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
-                    .done(function () {
-                        button.removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Going");
-                    })
-                    .fail(function () {
-                        alert("Something Failed");
-                    });
-            } else {
-                $.ajax({
-                        url: "/api/attendances/" + button.attr("data-gig-id"),
-                        method: "DELETE",
-                        contentType: "application/json"
-                    })
-                    .done(function () {
-                        button.removeClass("btn-info")
-                            .addClass("btn-default")
-                            .text("Going?");
+        $(".js-toggle-attendance").click(toggleAttendance);
 
-                    })
-                    .fail(function () {
-                        alert("Something failed??");
-                    });
-            }
-
-        });
     };
+
+
+    var button;
+
+    var toggleAttendance = function (e) {
+        button = $(e.target);
+        if (button.hasClass("btn-default")) {
+            $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
+                .done(done)
+                .fail(fail);
+        } else {
+            $.ajax({
+                    url: "/api/attendances/" + button.attr("data-gig-id"),
+                    method: "DELETE",
+                    contentType: "application/json"
+                })
+                .done(done)
+                .fail(fail);
+        }
+
+    };
+
+    var fail = function () {
+        alert("Something failed...");
+    };
+
+    var done = function() {
+        var text = (button.text() == "Going") ? "Going?" : "Going";
+        button.toggleClass("btn-info").toggleClass("btn-default").text(text);
+    };
+
     //Where we make it public
     return{
         init: init

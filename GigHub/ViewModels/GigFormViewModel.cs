@@ -21,6 +21,7 @@ namespace GigHub.ViewModels
             {
                 /* In Func Delegate c stands for GigsController
                  Update method returns Action Result
+                 if (id!=0) update else create
                  
                  */
                 Expression<Func<GigsController, ActionResult>> update =

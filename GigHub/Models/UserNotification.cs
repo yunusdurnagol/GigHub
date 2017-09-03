@@ -19,7 +19,7 @@ namespace GigHub.Models
         public ApplicationUser User { get; private set; }
         public Notification Notification { get; private set; }
 
-        public bool IsRead { get; set; }
+        public bool IsRead { get; private set; }
 
         // This is for entity framework We have to create it and we define it protected so nowhere in the code we wont use this 
 
@@ -37,6 +37,11 @@ namespace GigHub.Models
 
             User = user;
             Notification = notification;
+        }
+
+        public void Read()
+        {
+            IsRead = true;
         }
     }
 }

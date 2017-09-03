@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Razor;
+using WebGrease.Css.Extensions;
 
 namespace GigHub.Models
 {
@@ -49,6 +50,10 @@ namespace GigHub.Models
             {
                 attendee.Notify(notification);
             }
+
+            //var attendees= Attendances.Select(a => a.Attendee);
+            //attendees.ForEach(a=>a.Notify(notification));
+            //Attendances.Select(a => a.Attendee).ForEach(a=>a.Notify(notification));
         }
     }
 }

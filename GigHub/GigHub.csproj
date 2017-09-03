@@ -237,7 +237,7 @@
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="ViewModels\GigViewModel.cs" />
+    <Compile Include="ViewModels\GigsViewModel.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataLayer\ApplicationUserConfiguration.cs" />
     <Compile Include="DataLayer\AttendanceConfiguration.cs" />

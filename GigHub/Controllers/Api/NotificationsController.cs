@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
 using GigHub.Dtos;
 using GigHub.Models;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Http;
 
 namespace GigHub.Controllers.Api
 {
@@ -22,7 +17,7 @@ namespace GigHub.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        public IEnumerable<NotificationDto> GetNewNotifications()
+        public IHttpActionResult GetNewNotifications()
         {
             var userId = User.Identity.GetUserId();
             //var notifications = _context.UserNotifications
@@ -37,9 +32,37 @@ namespace GigHub.Controllers.Api
                 .Select(un => un.Notification)
                 .Include(n => n.Gig.Artist)
                 .ToList();
+            int count = notifications.Count();
 
-            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
+            if (notifications.Count == 0)
+            {
+                notifications = _context.UserNotifications
+               .Where(u => u.UserId == userId)
+               .Select(un => un.Notification)
+               .OrderByDescending(un => un.Id).Take(5)
+               .Include(n => n.Gig.Artist)
+               .ToList();
+                count = 0;
+            }
+            var notificationList = notifications.Select(Mapper.Map<Notification, NotificationDto>);
+
+
+            return Ok(new { notificationList, count });
             // return notifications;
         }
+
+        [HttpPost]
+        public IHttpActionResult MarkAsRead()
+        {
+            var userId = User.Identity.GetUserId();
+            var notifications = _context
+                .UserNotifications
+                .Where(un => un.UserId == userId && !un.IsRead)
+                .ToList();
+            notifications.ForEach(n => n.Read());
+            _context.SaveChanges();
+            return Ok();
+        }
+
     }
 }

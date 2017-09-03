@@ -38,11 +38,11 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lib")
+   
     @RenderSection("scripts", required: false)
 
-    <script type="text/x-notifications" id="notifications-template">
+<script type="text/x-notifications" id="notifications-template">
                 <ul class="popover-notifications">
                     <%
                         _.each(notifications,function(notification)
@@ -75,7 +75,12 @@
                            <%= originalValues.join('/')%> to <span class="highlight"> <%= newValues.join('/')%> </span>
     </li> 
                     <%
-                        }
+                        }else if(notification.type==3){
+                    %>
+                    <li> New gig is added by <%= notification.gig.artist.name%> at <%= notification.gig.venue%> on 
+                    <%= moment(notification.gig.dateTime).format("D MMM HH:mm")%></li>
+                    <%
+                    }
                     })
                     %>
                 </ul>
@@ -86,10 +91,33 @@
               
                 $.getJSON("/api/notifications/",
                     function (notificationsFromServer) {
-                        if (notificationsFromServer.length == 0)
+                         
+                        var notificationList=notificationsFromServer.notificationList;
+                        var count=notificationsFromServer.count;
+                        if (count == 0)
+                        {
+                            $(".js-notifications-count").
+                                text("").
+                                removeClass("hide") ;
+
+                            $(".notifications").popover({
+                                html: true,
+                                title: "notifications",
+                                placement: "bottom",
+                                content: function () {
+                                    //Hello <%=name %> 
+                                    var compiled = _.template($("#notifications-template").html());
+                                    var html = compiled({ notifications: notificationList });
+                                    return html;
+                                }
+                            })
+                            
                             return;
+
+                        }
+                            
                         $(".js-notifications-count").
-                            text(notificationsFromServer.length).
+                            text(count).
                             removeClass("hide")
                             .addClass("animated bounceInDown");
 
@@ -100,9 +128,20 @@
                             content: function () {
                                 //Hello <%=name %> 
                                 var compiled = _.template($("#notifications-template").html());
-                                var html = compiled({ notifications:notificationsFromServer });
+                                var html = compiled({ notifications: notificationList });
                                 return html;
                             }
+                        })
+                            .on('shown.bs.popover', function () {
+                            $.post("api/notifications/markAsRead")
+                                .done(function() {
+                                    $(".js-notifications-count").
+                                        addClass("hide").
+                                        text("");
+
+                                });
+
+
                         });
                         
                     });

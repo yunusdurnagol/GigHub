@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using GigHub.Models;
+﻿using GigHub.Models;
 using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
+using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace GigHub.Controllers
 {
@@ -53,6 +51,13 @@ namespace GigHub.Controllers
             return View("Gigs", gigViewModel);
         }
 
+        [HttpPost]
+        public ActionResult Search(GigsViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Home", new { query = viewModel.searchTerm });
+        }
+
+
         [Authorize]
         public ActionResult Create()
         {
@@ -85,16 +90,25 @@ namespace GigHub.Controllers
             //var artist = _context.Users.Single(u => u.Id == userId);
             //var genre = _context.Genres.Single(g => g.Id == viewModel.Genre); 
             #endregion
-
+            var userId = User.Identity.GetUserId();
             var gig = new Gig()
             {
-                ArtistId = User.Identity.GetUserId(),
+                ArtistId = userId,
                 DateTime = viewModel.GetDateTime(),
                 GenreId = viewModel.Genre,
                 Venue = viewModel.Venue,
 
             };
             _context.Gigs.Add(gig);
+
+            var notification = Notification.GigCreated(gig);
+            var followers = _context.Followings.Where(f => f.FolloweeId == userId).Include(f => f.Follower);
+            foreach (var myFollower in followers)
+            {
+                myFollower.Follower.Notify(notification);
+            }
+
+
             _context.SaveChanges();
 
             return RedirectToAction("Mine", "Gigs");

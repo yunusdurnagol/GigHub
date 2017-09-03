@@ -143,6 +143,10 @@ body {
 /*
     Page-Level Styles
 */
+
+#searchGroup{
+    width:300px;
+}
 .gigs {
     list-style: none;
 }

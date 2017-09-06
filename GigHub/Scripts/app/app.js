@@ -43,23 +43,23 @@ var GigsController = function (attendanceService) {
             attendanceService.deleteAttendance(gigId, done,fail);
     };
 
-    var createAttendance = function () {
-        $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
-            .done(done)
-            .fail(fail);
+    //var createAttendance = function () {
+    //    $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
+    //        .done(done)
+    //        .fail(fail);
 
-    };
+    //};
 
-    var deleteAttendance = function () {
+    //var deleteAttendance = function () {
 
-        $.ajax({
-            url: "/api/attendances/" + button.attr("data-gig-id") ,
-            method: "DELETE",
-            contentType: "application/json"
-        })
-            .done(done)
-            .fail(fail);
-    };
+    //    $.ajax({
+    //        url: "/api/attendances/" + button.attr("data-gig-id") ,
+    //        method: "DELETE",
+    //        contentType: "application/json"
+    //    })
+    //        .done(done)
+    //        .fail(fail);
+    //};
 
 
     var fail = function () {

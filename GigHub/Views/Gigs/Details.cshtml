@@ -5,19 +5,24 @@
   
 }
 
+
 <h2>@Model.Gig.Artist.Name
     @if (User.Identity.IsAuthenticated)
     {
         if (Model.IsFollowing)
         {
-            <button class="btn btn-info" >Following</button>
+            <button data-artist-id="@Model.Gig.ArtistId" class="js-toggle-follow btn btn-info" >Following</button>   
         }
         else
         {
-            <button class="btn btn-default">Follow</button>
+            <button data-artist-id="@Model.Gig.ArtistId" class="js-toggle-follow btn btn-default">Follow</button>
         }
+
     }
 </h2>
+@if(Model.Gig.isCanceled){
+<span class="label label-warning">Canceled by @Model.Gig.Artist.Name</span>
+}
 <p>
     Performing at @Model.Gig.Venue on @Model.Gig.DateTime.Value.ToString("d MMM") at @Model.Gig.DateTime.Value.ToString("HH:mm")
 </p>
@@ -29,3 +34,18 @@ else
 {
     <b>You are not attending this event yet...</b>
 }
+
+
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            gigsDetailController.init();
+         });
+</script>
+    }
+
+
+
+

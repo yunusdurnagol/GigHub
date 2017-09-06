@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using GigHub.Dtos;
+﻿using GigHub.Dtos;
 using GigHub.Models;
 using Microsoft.AspNet.Identity;
+using System.Linq;
+using System.Web.Http;
 
 namespace GigHub.Controllers.Api
 {
@@ -32,6 +29,20 @@ namespace GigHub.Controllers.Api
             _context.Followings.Add(following);
             _context.SaveChanges();
             return Ok();
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteFollow(string Id)
+        {
+            var userId = User.Identity.GetUserId();
+            var following = _context.Followings
+                .SingleOrDefault(f => f.FollowerId == userId && f.FolloweeId == Id);
+            if (following == null)
+                return NotFound();
+            _context.Followings.Remove(following);
+            _context.SaveChanges();
+            return Ok(Id);
+
         }
 
     }

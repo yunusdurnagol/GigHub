@@ -41,10 +41,7 @@
                     {
                         <span class="label label-warning">Canceled</span>
                     }
-                    @if (@Model.ShowActions)
-                    {
-                        <button data-artist-id="@gig.ArtistId" class="js-toggle-follow btn btn-default btn-sm pull-right">Follow</button>
-                    }
+                   
                 </span>
               
              
@@ -77,21 +74,5 @@
         });
     </script>
     
-    <script>
-        $(document).ready(function() {
-            $(".js-toggle-follow").click(function(e) {
-                var button = $(e.target);
-                $.post("/api/following", {followeeId:button.attr("data-artist-id")})
-                    .done(function() {
-                        button.removeClass("btn-default")
-                            .addClass("btn-info")
-                            .text("Following");
-                    })
-                    .fail(function() {
-                        alert("Something Failed");
-                    });
-            });
-            //button click
-        });
-    </script>
+    
 }

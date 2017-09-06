@@ -11,7 +11,8 @@ namespace GigHub
 
                 // "~/Scripts/app/controllers/gigsController.js",
                 // "~/Scripts/app/services/attendanceService.js"
-                "~/Scripts/app/app.js"
+                "~/Scripts/app/app.js",
+                "~/Scripts/app/gigsDetailController.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                          "~/Scripts/moment.min.js",

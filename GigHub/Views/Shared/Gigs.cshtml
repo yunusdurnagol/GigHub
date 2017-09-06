@@ -15,7 +15,7 @@
  }
 
 
-<ul class="gigs voffset4">
+<ul id="gigsContainer" class="gigs voffset4">
     @if (Model.Heading == "Gigs I'm Attending" && Model.UpComingGigs.ToList().Count == 0)
     {
         <h4>You don't have any gigs on the schedule yet.</h4> 
@@ -73,8 +73,7 @@
 {
     <script>
         $(document).ready(function() {
-            GigsController.init();
-            
+            GigsController.init("#gigsContainer");
         });
     </script>
     

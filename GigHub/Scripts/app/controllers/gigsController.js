@@ -1,32 +1,6 @@
-﻿var AttendanceService = function () {
-    var createAttendance = function (gigId, done, fail) {
-        $.post("/api/attendances", { gigId: gigId })
-            .done(done)
-            .fail(fail);
-
-    };
-
-    var deleteAttendance = function (gigId,done,fail) {
-
-        $.ajax({
-            url: "/api/attendances/" + gigId ,
-            method: "DELETE",
-            contentType: "application/json"
-        })
-            .done(done)
-            .fail(fail);
-    };
-
-    return {
-        createAttendance: createAttendance,
-        deleteAttendance: deleteAttendance
-    }
-}();
-
-
-var GigsController = function (attendanceService) {
-    var init = function(container) {
-        //$(".js-toggle-attendance").click(toggleAttendance);
+﻿var GigsController = function (attendanceService) {
+    var init = function (container) {
+       // $(".js-toggle-attendance").click(toggleAttendance);
         $(container).on("click", ".js-toggle-attendance", toggleAttendance);
 
     };
@@ -40,7 +14,7 @@ var GigsController = function (attendanceService) {
         if (button.hasClass("btn-default"))
             attendanceService.createAttendance(gigId, done, fail);
         else
-            attendanceService.deleteAttendance(gigId, done,fail);
+            attendanceService.deleteAttendance(gigId, done, fail);
     };
 
     var createAttendance = function () {
@@ -53,7 +27,7 @@ var GigsController = function (attendanceService) {
     var deleteAttendance = function () {
 
         $.ajax({
-            url: "/api/attendances/" + button.attr("data-gig-id") ,
+            url: "/api/attendances/" + button.attr("data-gig-id"),
             method: "DELETE",
             contentType: "application/json"
         })
@@ -66,15 +40,13 @@ var GigsController = function (attendanceService) {
         alert("Something failed...");
     };
 
-    var done = function() {
+    var done = function () {
         var text = (button.text() == "Going") ? "Going?" : "Going";
         button.toggleClass("btn-info").toggleClass("btn-default").text(text);
     };
 
     //Where we make it public
-    return{
+    return {
         init: init
     }
 }(AttendanceService);
-
- 

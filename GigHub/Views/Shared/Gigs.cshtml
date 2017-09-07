@@ -26,10 +26,11 @@
         <li>
             <div class="date">
                 <div class="month">
-                    @gig.DateTime.Value.ToString("MMM")
+                    @gig.DateTime.Value.ToString("yyyy")
                 </div>
                 <div class="day">
-                    @gig.DateTime.Value.ToString("d ")
+                    @gig.DateTime.Value.ToString("d ") @gig.DateTime.Value.ToString("MMM")
+               
                 </div>
             </div>
             <div class="details">
@@ -56,6 +57,7 @@
                         class="js-toggle-attendance btn 
                             @(Model.Attendances.Contains(gig.Id)?"btn-info":"btn-default") 
                             btn-sm pull-right">Going ?</button>
+                          
                 }
                
             </div>

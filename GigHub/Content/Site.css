@@ -157,7 +157,7 @@ body {
 .gigs > li .date {
     background: red;
     color: white;
-    width: 60px;
+    width: 65px;
     text-align: center;
     -ms-border-radius: 8px;
     border-radius: 8px;
@@ -173,14 +173,14 @@ body {
     .gigs > li .date .day {
         background: #f7f7f7;
         color: #333;
-        font-size: 20px;
+        font-size: 14px;
         padding: 6px 12px;
     }
 
 .gigs > li .details {
     position: absolute;
     top: 5px;
-    left: 70px;
+    left: 80px;
     
 }
 

@@ -213,6 +213,8 @@
     <Compile Include="Controllers\Api\FollowingController.cs" />
     <Compile Include="Controllers\Api\GigController.cs" />
     <Compile Include="Controllers\Api\NotificationsController.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
+    <Compile Include="Repositories\FollowingRepository.cs" />
     <Compile Include="DataLayer\NotificationConfiguration.cs" />
     <Compile Include="DataLayer\UserNotificationConfiguration.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
@@ -239,6 +241,9 @@
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\UserNotification.cs" />
+    <Compile Include="Repositories\AttendanceRepository.cs" />
+    <Compile Include="Repositories\GenreRepository.cs" />
+    <Compile Include="Repositories\GigRepository.cs" />
     <Compile Include="ViewModels\FollowerViewModel.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\GigsController.cs" />

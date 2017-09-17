@@ -1,5 +1,5 @@
 ﻿@using GigHub.Controllers
-@model  GigHub.ViewModels.GigsViewModel
+@model  GigHub.Core.ViewModels.GigsViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -38,7 +38,7 @@
                     <a href="@Url.Action("Details","Gigs",new {id=@gig.Id})">
                          @gig.Artist.Name
                     </a>
-                    @if (gig.isCanceled)
+                    @if (gig.IsCanceled)
                     {
                         <span class="label label-warning">Canceled</span>
                     }
@@ -50,7 +50,7 @@
                     @gig.Genre.Name
                    
                 </span>
-                @if (@Model.ShowActions&&!gig.isCanceled)
+                @if (@Model.ShowActions&&!gig.IsCanceled)
                 {
                     <button 
                         data-gig-id="@gig.Id" 

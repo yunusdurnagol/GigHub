@@ -4,10 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using GigHub.Dtos;
-using GigHub.Models;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
+using GigHub.Persistence;
 
 namespace GigHub.Controllers.Api
 {
@@ -28,7 +27,7 @@ namespace GigHub.Controllers.Api
                 .Include(g => g.Attendances.Select(a => a.Attendee))
                 .Single(g => g.Id == id && g.ArtistId == userId);
 
-            if (gig.isCanceled)
+            if (gig.IsCanceled)
                 return NotFound();
 
             gig.Cancel();

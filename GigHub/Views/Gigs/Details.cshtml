@@ -1,4 +1,4 @@
-﻿@model GigHub.ViewModels.GigDetailsViewModel
+﻿@model GigHub.Core.ViewModels.GigDetailsViewModel
 
 @{
     ViewBag.Title = "title";
@@ -20,7 +20,7 @@
 
     }
 </h2>
-@if(Model.Gig.isCanceled){
+@if(Model.Gig.IsCanceled){
 <span class="label label-warning">Canceled by @Model.Gig.Artist.Name</span>
 }
 <p>
